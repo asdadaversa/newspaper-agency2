@@ -36,11 +36,16 @@ class Newspaper(models.Model):
     topic = models.ForeignKey(
         Topic,
         on_delete=models.DO_NOTHING,
+        related_name="subjects"
     )
 
     publishers = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="authors"
+        related_name="authors",
+    )
+    additional_topics = models.ManyToManyField(
+        Topic,
+        related_name="topics",
     )
 
     class Meta:
