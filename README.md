@@ -4,4 +4,4 @@
 
 - After loading data from fixture you can use following superuser (or create another one by yourself):
   - Login: `admin`
-  - Password: `Qwerty.`
+  - Password: `Qwerty.1`

@@ -1,8 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
-from newspaper.models import Topic, Newspaper
-
 
 class NewspaperAdminForm(forms.ModelForm):
 
@@ -11,3 +9,6 @@ class NewspaperAdminForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
+
+    class Meta:
+        fields = ["title", "content", "topic", "publishers"]
