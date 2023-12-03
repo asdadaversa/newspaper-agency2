@@ -1,3 +1,12 @@
+# Newspaper agency (NA) project
+
+Django project for managing newspapers and authors in Agency
+
+## Check it out!
+
+[NA deployed to render] (https://...)
+
+
 # newspaper-agency2
 
 Python3 must be already installed
@@ -10,6 +19,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 python manage.py runserver
 ```
+
+![](demo.png)
+
 
 `python manage.py loaddata db_data.json`
 
