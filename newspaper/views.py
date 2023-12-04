@@ -1,21 +1,11 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from newspaper.forms import LoginForm, SignUpForm
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
-from typing import Any
-
-from django.db.models.query import Q
+from newspaper.forms import LoginForm, SignUpForm, RedactorCreationForm
 from django.views import generic
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-from django import template
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, get_user_model
-from django.template import loader
 
 from newspaper.models import Redactor, Topic, Newspaper
 
@@ -86,3 +76,29 @@ def index(request: HttpRequest) -> HttpResponse:
     }
 
     return render(request, "home/index.html", context=context)
+
+
+class RedactorListView(LoginRequiredMixin, generic.ListView):
+    model = Redactor
+    paginate_by = 5
+
+
+class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Redactor
+    queryset = Redactor.objects.all().prefetch_related("authors__publishers")
+
+
+class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Redactor
+    form_class = RedactorCreationForm
+    success_url = reverse_lazy("newspaper:redactor-list")
+
+
+class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Redactor
+    form_class = RedactorCreationForm
+
+
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("newspaper:redactor-list")

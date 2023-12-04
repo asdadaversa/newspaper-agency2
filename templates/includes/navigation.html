@@ -14,7 +14,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </span>
             </button>
-            <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
+            <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation" >
               <ul class="navbar-nav navbar-nav-hover ms-auto">
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,10 +24,10 @@
                   <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                     <div class="d-none d-lg-block">
                       <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1">
-                        Landing Pages
+                        Pages
                       </h6>
-                      <a href="/" class="dropdown-item border-radius-md">
-                        <span>About Us</span>
+                      <a href="{% url 'newspaper:redactor-list' %}" class="dropdown-item border-radius-md">
+                        <span>Redactor list</span>
                       </a>
                       <a href="/contact-us.html" class="dropdown-item border-radius-md">
                         <span>Contact Us</span>
@@ -64,17 +64,23 @@
                     </div>
                   </div>
                 </li>
-
+                <br>
 
                 {% if request.user.is_authenticated %}
-<!--                   make user here-->
-                  <li class="nav-item ms-lg-auto">
-                    <a class="nav-link nav-link-icon me-2" 
+                <ul class="sidebar-nav list-group" >
+                    <a
+                        href="{% url 'newspaper:redactor-detail' pk=user.id %} ">
+                      {{ user.get_username }}
+                    </a>
+
+
+                    <a
                       href="{% url 'newspaper:logout' %}">
                       <i class="fa fa-sign-out me-1"></i>
-                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</p>
+                      <p class="d-inline text-sm font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</p>
                     </a>
-                  </li>          
+
+                </ul>
                 {% endif %}
 
               </ul>

@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+from newspaper.models import Redactor
 
 
 class LoginForm(forms.Form):
@@ -67,3 +69,11 @@ class NewspaperAdminForm(forms.ModelForm):
 
     class Meta:
         fields = ["title", "content", "topic", "publishers"]
+
+
+class RedactorCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = Redactor
+        fields = UserCreationForm.Meta.fields + (
+            "years_of_experience", "first_name", "last_name",
+        )
