@@ -8,6 +8,7 @@
   {% include 'includes/navigation.html' %}
     <br><br><br><br>
 <div class="container">
+  <br><br>
   <div class="card card-body blur shadow-blur mx-3 mx-lg-4 mt-n1"  >
     <section class="my-4 py-4" >
           <a style="float:right" href="{% url 'newspaper:redactor-list' %}" class="btn btn-primary link-to-page">
@@ -35,11 +36,14 @@
 
                 <div class="info">
                         <div class="ml-3">
+                          <br>
     <h4>Newspapers:</h4>
 
     {% for newspaper in redactor.authors.all %}
         <hr>
-        <p><strong>title:</strong> {{ newspaper.title }} <strong>( {{ newspaper.topic }})</strong></p>
+        <p>{{ newspaper.title }}
+          <a href="{% url 'newspaper:topic-detail' pk=newspaper.topic.id %} "><strong>( {{ newspaper.topic }})</strong></a>
+        </p>
 
     {% empty %}
       <p>No newspaper</p>

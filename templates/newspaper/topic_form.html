@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}{{ object|yesno:"Update,Create" }} topic {% endblock %}
+
+{% block content %}
+<br><br><br>
+  <div class="card card-body" >
+  <h1>{{ object|yesno:"Update,Create" }} topic</h1>
+  <form action="" method="post" novalidate>
+    {% csrf_token %}
+   <b>{{ form|crispy }} </b>
+
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+  </div>
+</div>
+{% endblock %}

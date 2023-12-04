@@ -10,6 +10,11 @@ from newspaper.views import (
     RedactorCreateView,
     RedactorUpdateView,
     RedactorDeleteView,
+    TopicListView,
+    TopicCreateView,
+    TopicUpdateView,
+    TopicDeleteView,
+    TopicDetailView,
 )
 
 
@@ -36,7 +41,31 @@ urlpatterns = [
         RedactorDeleteView.as_view(),
         name="redactor-delete"
     ),
-
+    path(
+        "topics/",
+        TopicListView.as_view(),
+        name="topic-list",
+    ),
+    path(
+        "topics/create/",
+        TopicCreateView.as_view(),
+        name="topic-create",
+    ),
+    path(
+        "topics/<int:pk>/update/",
+        TopicUpdateView.as_view(),
+        name="topic-update",
+    ),
+    path(
+        "topics/<int:pk>/delete/",
+        TopicDeleteView.as_view(),
+        name="topic-delete",
+    ),
+    path(
+        "topics/<int:pk>/",
+        TopicDetailView.as_view(),
+        name="topic-detail"
+    )
 ]
 
 app_name = "newspaper"

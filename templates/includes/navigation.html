@@ -29,8 +29,9 @@
                       <a href="{% url 'newspaper:redactor-list' %}" class="dropdown-item border-radius-md">
                         <span>Redactor list</span>
                       </a>
-                      <a href="/contact-us.html" class="dropdown-item border-radius-md">
-                        <span>Contact Us</span>
+                      <a href="{% url 'newspaper:topic-list'%}" class="dropdown-item border-radius-md">
+
+                        <span>Topic list</span>
                       </a>
                       <a href="/author.html" class="dropdown-item border-radius-md">
                         <span>Author</span>
@@ -38,31 +39,14 @@
                       <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1 mt-3">
                         Account
                       </h6>
-                      <a href="/sign-in.html" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:login' %}" class="dropdown-item border-radius-md">
                         <span>Sign In</span>
                       </a>
-                    </div>
-                    <div class="d-lg-none">
-                      <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1">
-                        Landing Pages
-                      </h6>
-                      <a href="/" class="dropdown-item border-radius-md">
-                        <span>About Us</span>
-                      </a>
-                      <a href="/contact-us.html" class="dropdown-item border-radius-md">
-                        <span>Contact Us</span>
-                      </a>
-                      <a href="/author.html" class="dropdown-item border-radius-md">
-                        <span>Author</span>
-                      </a>
-                      <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1 mt-3">
-                        Account
-                      </h6>
-                      <a href="/sign-in.html" class="dropdown-item border-radius-md">
-                        <span>Sign In</span>
+                      <a href="{% url 'newspaper:register' %}" class="dropdown-item border-radius-md">
+                        <span>Register</span>
                       </a>
                     </div>
-                  </div>
+
                 </li>
                 <br>
 
