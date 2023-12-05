@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 from newspaper.models import Redactor, Newspaper, Topic
@@ -94,3 +93,12 @@ class NewspaperForm(forms.ModelForm):
     class Meta:
         model = Newspaper
         fields = "__all__"
+
+
+class NewspaperSearchForm(forms.Form):
+    title = forms.CharField(
+        max_length=255,
+        required=True,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by title", })
+    )

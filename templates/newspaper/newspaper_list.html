@@ -1,5 +1,6 @@
 {% extends 'layouts/base-fullscreen.html' %}
 {% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
 
 {% block title %}Redactors list {% endblock %}
 
@@ -20,6 +21,13 @@
         Add Newspaper
       </a>
     </h1>
+              <br>
+               <div class="form-group" >
+<form method="get" action="" class="form-inline" >
+  {{ search_form|crispy }}
+  <input class="btn btn-secondary" type="submit" value="🔎 lets find 🐈">
+</form>
+              </div>
 <br>
 
 <br>
