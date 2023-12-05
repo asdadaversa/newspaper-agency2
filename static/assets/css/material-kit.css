@@ -1778,7 +1778,7 @@ progress {
 .form-label {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: bold;
   color: #7b809a; }
 
 .col-form-label {
@@ -1804,12 +1804,11 @@ progress {
   margin-top: 0.25rem;
   font-size: 0.875em;
   color: #6c757d; }
-
 .form-control {
   display: block;
   width: 100%;
   padding: 0.5rem 0;
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5rem;
   color: #495057;
@@ -13847,8 +13846,8 @@ body.dark-version {
 
 label,
 .form-label {
-  font-size: 0.875rem;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 0.5rem;
   color: #7b809a;
   margin-left: 0.25rem; }

@@ -1,11 +1,11 @@
-from newspaper.forms import LoginForm, SignUpForm, RedactorCreationForm
+from newspaper.forms import LoginForm, SignUpForm, RedactorCreationForm, NewspaperForm
 from django.views import generic
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login
 
 from newspaper.models import Redactor, Topic, Newspaper
 
@@ -129,3 +129,29 @@ class TopicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Topic
     queryset = Topic.objects.all()
     paginate_by = 5
+
+
+class NewspaperListView(LoginRequiredMixin, generic.ListView):
+    model = Newspaper
+    paginate_by = 10
+
+
+class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Newspaper
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    success_url = reverse_lazy("newspaper:newspaper-list")
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    success_url = reverse_lazy("newspaper:newspaper-list")
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("newspaper:newspaper-list")

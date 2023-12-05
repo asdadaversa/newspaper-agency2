@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from newspaper.models import Redactor
+from newspaper.models import Redactor, Newspaper, Topic
 
 
 class LoginForm(forms.Form):
@@ -77,3 +77,20 @@ class RedactorCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "years_of_experience", "first_name", "last_name",
         )
+
+
+class NewspaperForm(forms.ModelForm):
+    publishers = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    additional_topics = forms.ModelMultipleChoiceField(
+        queryset=Topic.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
+    class Meta:
+        model = Newspaper
+        fields = "__all__"
