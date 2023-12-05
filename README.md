@@ -13,15 +13,23 @@ Python3 must be already installed
 
 ```shell
 git clone https://github.com/asdadaversa/newspaper-agency2.git
-cd newspaper-agency
+cd newspaper-agency2
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python manage.py runserver
+```
+> Set Up Database
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+```bash
+$ python manage.py runserver
 ```
 
-![](demo.png)
+At this point, the app runs at `http://127.0.0.1:8000/`.
 
+![](demo.png)
 
 `python manage.py loaddata db_data.json`
 

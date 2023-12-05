@@ -12,7 +12,7 @@ from newspaper.forms import (
     SignUpForm,
     RedactorCreationForm,
     NewspaperForm,
-    NewspaperSearchForm
+    NewspaperSearchForm, RedactorUpdateForm
 )
 
 
@@ -106,7 +106,8 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
 
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
-    form_class = RedactorCreationForm
+    form_class = RedactorUpdateForm
+    success_url = reverse_lazy("newspaper:index")
 
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
