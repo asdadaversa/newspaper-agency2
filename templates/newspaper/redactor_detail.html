@@ -39,9 +39,10 @@
                           <br>
     <h4>Newspapers:</h4>
 
-    {% for newspaper in redactor.authors.all %}
+    {% for newspaper in redactor.newspapers.all %}
         <hr>
-        <p>{{ newspaper.title }}
+        <p><a href="{% url 'newspaper:newspaper-detail' pk=newspaper.id %} "><strong> {{ newspaper.title }}</strong></a>
+
           <a href="{% url 'newspaper:topic-detail' pk=newspaper.topic.id %} "><strong>( {{ newspaper.topic }})</strong></a>
         </p>
 

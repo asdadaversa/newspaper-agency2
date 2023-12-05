@@ -42,7 +42,7 @@ class Newspaper(models.Model):
 
     publishers = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="authors",
+        related_name="newspapers",
     )
     additional_topics = models.ManyToManyField(
         Topic,

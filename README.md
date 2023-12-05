@@ -23,6 +23,9 @@ pip install -r requirements.txt
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
+
+`python manage.py loaddata db_data.json`
+
 ```bash
 $ python manage.py runserver
 ```
@@ -31,7 +34,7 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 
 ![](demo.png)
 
-`python manage.py loaddata db_data.json`
+
 
 - After loading data from fixture you can use following superuser (or create another one by yourself):
   - Login: `admin`

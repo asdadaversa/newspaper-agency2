@@ -95,7 +95,7 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
-    queryset = Redactor.objects.all().prefetch_related("authors__publishers")
+    queryset = Redactor.objects.all().prefetch_related("newspapers__publishers")
 
 
 class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
@@ -107,7 +107,7 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     form_class = RedactorUpdateForm
-    success_url = reverse_lazy("newspaper:index")
+    success_url = reverse_lazy("newspaper:home")
 
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
