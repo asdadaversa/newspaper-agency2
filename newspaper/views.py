@@ -131,6 +131,7 @@ class TopicCreateView(LoginRequiredMixin, generic.CreateView):
 class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Topic
     fields = "__all__"
+    success_url = reverse_lazy("newspaper:topic-list")
 
 
 class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
