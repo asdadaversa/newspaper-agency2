@@ -31,9 +31,15 @@ urlpatterns = [
 
     path("redactors/", RedactorListView.as_view(), name="redactor-list"),
     path(
-        "redactors/<int:pk>/", RedactorDetailView.as_view(), name="redactor-detail"
+        "redactors/<int:pk>/",
+        RedactorDetailView.as_view(),
+        name="redactor-detail"
     ),
-    path("redactors/create/", RedactorCreateView.as_view(), name="redactor-create"),
+    path(
+        "redactors/create/",
+        RedactorCreateView.as_view(),
+        name="redactor-create"
+    ),
 
     path(
         "redactors/<int:pk>/update/",

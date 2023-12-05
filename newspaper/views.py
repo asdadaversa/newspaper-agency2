@@ -1,13 +1,19 @@
-from newspaper.forms import LoginForm, SignUpForm, RedactorCreationForm, NewspaperForm, NewspaperSearchForm
 from django.views import generic
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
 from newspaper.models import Redactor, Topic, Newspaper
+from newspaper.forms import (
+    LoginForm,
+    SignUpForm,
+    RedactorCreationForm,
+    NewspaperForm,
+    NewspaperSearchForm
+)
 
 
 def login_view(request):
@@ -52,7 +58,11 @@ def register_user(request):
     else:
         form = SignUpForm()
 
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    return render(
+        request,
+        "accounts/register.html",
+        {"form": form, "msg": msg, "success": success}
+    )
 
 
 @login_required(login_url='/login/')

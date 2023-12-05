@@ -53,4 +53,5 @@ class Newspaper(models.Model):
         ordering = ("published_date", )
 
     def __str__(self):
-        return f"title: {self.title}, topic: {self.topic}, published date: {self.published_date}"
+        return (f"title: {self.title}, topic: {self.topic}, "
+                f"published date: {self.published_date}")
