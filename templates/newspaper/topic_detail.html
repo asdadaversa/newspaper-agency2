@@ -32,7 +32,7 @@
     {% for news in topic.subjects.all|slice:"10" %}
       <tr>
 
-        <td>{{ news.title }}</td>
+        <td><a href="{% url 'newspaper:newspaper-detail' pk=news.id %}">{{ news.title }}</a></td>
         <td>{{ news.publishers }}</td>
          <td>{{ news.published_date }}</td>
       </tr>
