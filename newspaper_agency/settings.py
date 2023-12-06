@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+<<<<<<< Updated upstream
+=======
+import os
+>>>>>>> Stashed changes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< Updated upstream
 SECRET_KEY = "secret-key"
 
 
@@ -27,6 +32,17 @@ SECRET_KEY = "secret-key"
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+=======
+# SECRET_KEY = "secret-key"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-@^$(@^19#%u(dfs&qc4ql4+146hnm637uk=q1anaz5c=#6ipvc")
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+
+
+ALLOWED_HOSTS = ["127.0.0.1"]
+>>>>>>> Stashed changes
 
 
 # Application definition
