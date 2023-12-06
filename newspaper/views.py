@@ -32,8 +32,6 @@ def login_view(request):
                 return redirect("/")
             else:
                 msg = 'Invalid credentials'
-        else:
-            msg = 'Error validating the form'
 
     return render(request, "accounts/login.html", {"form": form, "msg": msg})
 
@@ -95,8 +93,8 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
-    queryset = Redactor.objects.all().prefetch_related(
-        "newspapers__publishers"
+    queryset = Redactor.objects.prefetch_related(
+        "newspaper_redactors__publishers"
     )
 
 
@@ -109,7 +107,7 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     form_class = RedactorUpdateForm
-    success_url = reverse_lazy("newspaper:home")
+    success_url = reverse_lazy("newspaper:index")
 
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):

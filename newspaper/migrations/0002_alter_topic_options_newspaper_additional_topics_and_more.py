@@ -17,7 +17,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="newspaper",
             name="additional_topics",
-            field=models.ManyToManyField(related_name="topics", to="newspaper.topic"),
+            field=models.ManyToManyField(
+                related_name="topics",
+                to="newspaper.topic"
+            ),
         ),
         migrations.AlterField(
             model_name="newspaper",

@@ -23,7 +23,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=255)
 
     class Meta:
-        ordering = ("id", )
+        ordering = ("name", )
 
     def __str__(self):
         return self.name
@@ -42,7 +42,7 @@ class Newspaper(models.Model):
 
     publishers = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="newspapers",
+        related_name="newspaper_redactors",
     )
     additional_topics = models.ManyToManyField(
         Topic,
@@ -53,5 +53,5 @@ class Newspaper(models.Model):
         ordering = ("published_date", )
 
     def __str__(self):
-        return (f"title: {self.title}, topic: {self.topic}, "
-                f"published date: {self.published_date}")
+        return (f"title: {self.title},"
+                f"topic: {self.topic}, published date: {self.published_date}")
