@@ -1,0 +1,187 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+
+{% block title %} Newspaper Home {% endblock %}
+
+{% block content %}
+ <body class="presentation-page bg-gray-200">
+
+  {% include 'includes/navigation.html' %}
+  <header class="header-2">
+    <div class="page-header1 min-vh-80 " style="background-image: url('https://c0.wallpaperflare.com/preview/105/94/569/administration-articles-bank-black-and-white.jpg'); background-size: cover;">
+      <div class="container">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+  </header>
+        <div class="container">
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+
+    <section class="pt-3 pb-4" id="count-stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 mx-auto py-3">
+            <div class="row">
+              <div class="col-md-4 position-relative">
+                <div class="p-3 text-center">
+                  <h1 class="text-gradient text-primary"><span id="state1" countTo="70">{{ num_redactors }}</span>+</h1>
+                  <h5 class="mt-3"><a href="{% url 'newspaper:redactor-list'%}">Redactors</a></h5>
+
+                </div>
+                <hr class="vertical dark">
+              </div>
+              <div class="col-md-4 position-relative">
+                <div class="p-3 text-center">
+                  <h1 class="text-gradient text-primary"> <span id="state2" countTo="15">{{ num_topics }}</span>+</h1>
+                  <h5 class="mt-3"><a href="{% url 'newspaper:topic-list'%}">Number of topics</a></h5>
+                </div>
+                <hr class="vertical dark">
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 text-center">
+                  <h1 class="text-gradient text-primary" id="state3" countTo="4">{{ num_newspaper }}</h1>
+                  <h5 class="mt-3"><a href="{% url 'newspaper:newspaper-list'%}">Number of newspaper</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="my-4 py-4">
+            <div class="container">
+        <div class="row align-items-left">
+          <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+            <div class="rotating-card-container">
+              <div class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5">
+                <div class="front front-background" style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;">
+                  <div class="card-body py-7 text-center">
+                    <h3 class="text-white">Add News <br /> </h3>
+                    <p class="text-white opacity-8">Add news(only fo registered member). News will be approved as soon as possible</p>
+                  </div>
+                </div>
+                <div class="back back-background" style="background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80); background-size: cover;">
+                  <div class="card-body pt-7 text-center">
+                    <h3 class="text-white">Choice your topic</h3>
+                    <p class="text-white opacity-8"> You will receive best wage for your article. Click to add</p>
+                    <a href="{% url 'newspaper:newspaper-create' %}" class="btn btn-white btn-sm w-50 mx-auto mt-3">Add news</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         <div class="col-lg-6 ms-auto">
+           <h3>Last news:</h3>
+            <div class="row justify-content-start">
+              {% for newspaper in list_newspaper|slice:"10" %}
+
+              <div class="col-md-10">
+                <ul>
+                <div class="info">
+                  <li>
+                    <h5 class="font-weight-bolder mt-3">
+                      <li>
+                  <a href="{% url 'newspaper:newspaper-detail' pk=newspaper.id %}">{{ newspaper.title }}</a>
+                   (<a href="{% url 'newspaper:topic-detail' pk=newspaper.topic.id %}">{{ newspaper.topic }}</a>)
+
+
+                    </h5>
+                  </li>
+                  </li>
+
+                </div>
+                  </ul>
+              </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+        </div>
+      </div>
+
+
+    </section>
+    <section class="my-4 py-4">
+      <div class="container">
+        <div class="row align-items-left">
+          <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+            <div class="rotating-card-container">
+              <div class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5">
+                <div class="front front-background" style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;">
+                  <div class="card-body py-7 text-center">
+                    <i class="material-icons text-white text-4xl my-3">touch_app</i>
+                    <h3 class="text-white"> Work with us</h3>
+                    <p class="text-white opacity-8">Start working with us. Become a famous author</p>
+                  </div>
+                </div>
+                <div class="back back-background" style="background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80); background-size: cover;">
+                  <div class="card-body pt-7 text-center">
+                    <h3 class="text-white">Register</h3>
+                    <a href="{% url 'newspaper:register' %}" class="btn btn-white btn-sm w-50 mx-auto mt-3">Sign up</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="col-lg-6 ms-auto">
+           <h3>redactors:</h3>
+            <div class="row justify-content-start">
+              {% for redactor in list_redactors|slice:"6" %}
+
+              <div class="col-md-10">
+                <ul>
+                <div class="info">
+                  <li>
+                    <h5 class="font-weight-bolder mt-3">
+                      <a href="{% url 'newspaper:redactor-detail' pk=redactor.id %}">{{redactor.username}}</a>
+                      ({{redactor.first_name}} {{redactor.last_name}})</h5></li>
+                </div>
+                  </ul>
+              </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="py-sm-7" id="download-soft-ui">
+      <div class="bg-gradient-dark position-relative m-3 border-radius-xl overflow-hidden">
+        <img src="/static/assets//img/shapes/waves-white.svg" alt="pattern-lines" class="position-absolute start-0 top-md-0 w-100 opacity-2">
+        <div class="container py-7 postion-relative z-index-2 position-relative">
+          <div class="row">
+            <div class="col-md-7 mx-auto text-center">
+              <h3 class="text-white mb-0">Newspaper agency</h3>
+            </div>
+          </div>
+        </div>
+            {% include 'includes/footer-auth.html' %}
+
+      </div>
+
+    </section>
+  </div>
+        </div>
+ {% endblock %}
