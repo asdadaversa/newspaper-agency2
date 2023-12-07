@@ -4,7 +4,7 @@ Django project for managing newspapers and authors in Agency
 
 ## Check it out!
 
-[[Newspaper agency project deployed to render]](https://newspaper-agency-1mwc.onrender.com/) 
+[Newspaper agency project deployed to render](https://newspaper-agency-1mwc.onrender.com/) 
 
 # newspaper-agency2
 
