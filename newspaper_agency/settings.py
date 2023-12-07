@@ -27,7 +27,7 @@ SECRET_KEY = "secret-key"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ["newspaper-agency-1mwc.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "newspaper-agency-1mwc.onrender.com"]
 
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
